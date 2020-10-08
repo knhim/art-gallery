@@ -1,0 +1,109 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/white-cube.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+i {
+  color: white;
+}
+
+#map {
+  height: 450px;
+  width: 100%;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 36px;
+  text-shadow: 1px 1px 2px;
+}
+
+
+
+.image {
+  max-height: 600px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.description-and-map {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.col-1 {
+  font-family: Arial, Helvetica, sans-serif;
+  flex-basis: 50%;
+  padding-left: 2rem;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.col-2 {
+  flex-basis: 50%;
+  border: 1px solid black;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+
+.frame {
+  background-color: black;
+  height: 600px; /* old height- 600 px , width: 1000px */
+}
+
+.previous-image {
+  position: absolute;
+  left: 10px;
+}
+
+.next-image {
+  position: absolute;
+  right: 10px;
+}
+
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+@media (max-width: 500px) {
+  .description-and-map {
+    flex-wrap: wrap;
+  }
+}

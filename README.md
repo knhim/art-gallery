@@ -9,7 +9,7 @@ A hackathon project utilizing the data from two public APIs to create an art gal
 ..* Google Maps API
 
 ## Live Demo
-Try this application live at [https://knhim.github.io/api-hackathon]
+Try this application live at https://knhim.github.io/api-hackathon
 
 ## Features
 

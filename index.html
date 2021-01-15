@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>API Hackathon</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"/>
   <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
+  <header class="text-center">
+    <h1>Kevin's Art Gallery</h1>
+  </header>
+  <div class="container h-100">
 
-    <div class="row">
-      <header class="title">
-        <h1>Kevin's Art Gallery</h1>
-      </header>
-    </div>
 
-    <div class="row">
 
-      <div class="left-column image-container frame">
+
+    <div class="row black-bg">
         <button class="previous-image "><i class="fas fa-arrow-left fa-6x"></i></button>
-        <img class="image">
+          <img class="image rounded mx-auto d-block">
         <button class="next-image"><i class="fas fa-arrow-right fa-6x"></i></button>
-      </div>
-
     </div>
 
-
-    <div class="description-and-map">
-      <div class="col-1 right-column">
+    <div class="row">
+      <div class="col-md">
+        <div class="right-column"></div>
         <h2 class="art-title"></h2>
         <h2 class="classification"></h2>
         <h2 class="date"></h2>
@@ -38,19 +39,25 @@
         <h2 class="medium"></h2>
         <h2 class="dimensions"></h2>
       </div>
-      <div class="col-2">
-        <div id="map"></div>
-      </div>
+      <div class="col-md" id="map"></div>
     </div>
 
-    <div class="modal">
-      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-      <span class="sr-only">Loading...</span>
-    </div>
+
+
+
 
   </div>
 
+
+
+
+
+
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO-K0jb-LuP5Z4rar4FWMbACXkIH1Y47s&callback=initMap"></script>
   <script src="main.js"></script>

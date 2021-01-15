@@ -37,7 +37,7 @@ const dateDescriptions = [];
 const workTypesDescriptions = [];
 const creationPlaceDescriptions = [];
 const mediumDescriptions = [];
-const dimensionsDescriptions = []
+const dimensionsDescriptions = [];
 
 
 // ajax call to grab art from harvard art museums
@@ -47,7 +47,7 @@ $.ajax({
   data: {
     apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
     hasimage: 1,
-    size: "30",
+    size: "25",
     classification: "any",
     century: "any",
     medium: "any",
@@ -158,8 +158,7 @@ function nextImage() {
     imageNumber = 0;
   }
   imageNumber++;
-  imageElement.src = artCollection[imageNumber] + '?height=600&width=600';
-  imageDiv.append(imageElement);
+  imageElement.src = artCollection[imageNumber]
   // divLeftColumn.append(imageDiv);
     updateDescriptions();
     // initMap();
@@ -168,7 +167,7 @@ function nextImage() {
 //function previous Image will go back one image
 function previousImage() {
   if (imageNumber === 0) {
-    imageNumber = 25;
+    imageNumber = 24;
   }
   imageNumber--;
   imageElement.src = artCollection[imageNumber];

@@ -108,7 +108,7 @@ function addImage(data) {
       artCollection.push(imagePath);
     }
   }
-  imageElement.src = artCollection[imageNumber] + '?height=600&width=600'; // to set initial first image
+  imageElement.src = artCollection[imageNumber]  // to set initial first image
   //imageElement.onload =
 }
 
@@ -190,6 +190,29 @@ function updateDescriptions() {
 }
 
 
+nextImageButton.addEventListener('click', nextImage);
+nextImageButton.addEventListener('click', dimScreen);
+previousImageButton.addEventListener('click', previousImage);
+previousImageButton.addEventListener('click', dimScreen);
+
+
+
+function loader() {
+
+}
+
+function dimScreen() {
+  document.querySelector('.loader').style.display = 'block';
+  document.querySelector('.dimmer').style.display = 'block';
+  setTimeout(undimScreen, 1000);
+}
+
+function undimScreen() {
+  document.querySelector('.loader').style.display= "none";
+  document.querySelector('.dimmer').style.display = 'none';
+}
+
+
 // Google Maps API Start
 
 
@@ -230,6 +253,3 @@ function convertToAddress(address) {
 }
 
 //Google Maps API End
-
-nextImageButton.addEventListener('click', nextImage);
-previousImageButton.addEventListener('click', previousImage);

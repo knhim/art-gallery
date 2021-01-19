@@ -48,6 +48,7 @@ $.ajax({
     apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
     hasimage: 1,
     size: "25",
+    copyright: "null",
     classification: "any",
     century: "any",
     medium: "any",
@@ -66,6 +67,36 @@ $.ajax({
 
 //ajax function to get specific object id, and then the creation place
 //use for loop to grab every object, and store THE RESPONSE into an array
+// function getFullObject(data) {
+//   for (let i = 0; i < data['records']['length']; i++) {
+//     let objectId = data['records'][i]['objectid'];
+//     $.ajax({
+//       url: "https://api.harvardartmuseums.org/object/" + objectId,
+//       method: "GET",
+//       data: {
+//         apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
+//       },
+//       success: data2 => {
+//         console.log(data2)
+//         fullObjectArray.push(data2);
+//         if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
+//           for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
+//             const getCreation = fullObjectArray[j]['places'][0]['displayname'];
+//             creationPlaceDescriptions.push(getCreation);
+//             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
+//             divRightColumn.append(creationPlaceElement);
+//             //
+//           }
+//           convertToAddress(creationPlaceDescriptions[0])
+//         }
+//       },
+//       error: error2 => {
+//         console.log(error2);
+//       }
+//     })
+//   }
+// }
+
 function getFullObject(data) {
   for (let i = 0; i < data['records']['length']; i++) {
     let objectId = data['records'][i]['objectid'];
@@ -79,7 +110,12 @@ function getFullObject(data) {
         fullObjectArray.push(data2);
         if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
           for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
-            const getCreation = fullObjectArray[j]['places'][0]['displayname'];
+            let getCreation = null;
+            if (!fullObjectArray[j]) {
+              getCreation = '';
+            } else {
+              getCreation = fullObjectArray[j]['places'][0]['displayname'];
+            }
             creationPlaceDescriptions.push(getCreation);
             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
             divRightColumn.append(creationPlaceElement);
@@ -100,16 +136,14 @@ function getFullObject(data) {
 function addImage(data) {
   for (let i = 0; i < data['records']['length']; i++) {
     if (data['records'][i]['images'].length === 0) {
-      // let altImagePath = "https://hvrd.art/o/" + data['records'][i]['objectid'];
-      i++;
-      // artCollection.push(altImagePath);
+      imagePath = 'test-image.png'
+      artCollection.push(imagePath);
     } else {
       let imagePath = data['records'][i]['images'][0]['baseimageurl']
       artCollection.push(imagePath);
     }
   }
   imageElement.src = artCollection[imageNumber]  // to set initial first image
-  //imageElement.onload =
 }
 
 //function to dynamically add descriptions to the art
@@ -153,27 +187,43 @@ function addDescription(data) {
 
 
 //function nextImage will move to next image
+// function nextImage() {
+//   if (imageNumber === 24) {
+//     imageNumber = 0;
+//   }
+//   imageNumber++;
+//   imageElement.src = artCollection[imageNumber]
+//   updateDescriptions();
+// }
+
+// //function previous Image will go back one image
+// function previousImage() {
+//   if (imageNumber === 0) {
+//     imageNumber = 24;
+//   }
+//   imageNumber--;
+//   imageElement.src = artCollection[imageNumber];
+//   updateDescriptions();
+// }
+
+//function nextImage will move to next image
 function nextImage() {
-  if (imageNumber === 24) {
+  imageNumber++;
+  if (imageNumber === artCollection.length) {
     imageNumber = 0;
   }
-  imageNumber++;
-  imageElement.src = artCollection[imageNumber]
-  // divLeftColumn.append(imageDiv);
-    updateDescriptions();
-    // initMap();
+  imageElement.src = artCollection[imageNumber];
+  updateDescriptions();
 }
 
 //function previous Image will go back one image
 function previousImage() {
-  if (imageNumber === 0) {
-    imageNumber = 24;
-  }
   imageNumber--;
+  if (imageNumber < 0 ) {
+    imageNumber = 24;
+  };
   imageElement.src = artCollection[imageNumber];
-  // divLeftColumn.append(imageElement);
   updateDescriptions();
-  // initMap();
 }
 
 //function updateDescriptions - will change the descriptions when user cycles through the images
@@ -208,9 +258,10 @@ function dimScreen() {
 }
 
 function undimScreen() {
-  document.querySelector('.loader').style.display= "none";
+  document.querySelector('.loader').style.display = "none";
   document.querySelector('.dimmer').style.display = 'none';
 }
+
 
 
 // Google Maps API Start
@@ -219,7 +270,7 @@ function undimScreen() {
 // created a function named initMap() to create a new map
 function initMap() {
   geocoder = new google.maps.Geocoder();
-  let latlng = {lat: 100, lng: 50};
+  let latlng = { lat: 100, lng: 50 };
   let mapOptions =
   {
     zoom: 6,

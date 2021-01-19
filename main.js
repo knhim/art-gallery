@@ -56,7 +56,6 @@ $.ajax({
     place: "any",
   },
   success: data => {
-    console.log(data);
     addDescription(data);
     addImage(data);
     getFullObject(data);
@@ -68,35 +67,6 @@ $.ajax({
 
 //ajax function to get specific object id, and then the creation place
 //use for loop to grab every object, and store THE RESPONSE into an array
-function getFullObject(data) {
-  for (let i = 0; i < data['records']['length']; i++) {
-    let objectId = data['records'][i]['objectid'];
-    $.ajax({
-      url: "https://api.harvardartmuseums.org/object/" + objectId,
-      method: "GET",
-      data: {
-        apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
-      },
-      success: data2 => {
-        fullObjectArray.push(data2);
-        if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
-          for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
-            const getCreation = fullObjectArray[j]['places'][0]['displayname'];
-            creationPlaceDescriptions.push(getCreation);
-            creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
-            divRightColumn.append(creationPlaceElement);
-            //
-          }
-          convertToAddress(creationPlaceDescriptions[0])
-        }
-      },
-      error: error2 => {
-        console.log(error2);
-      }
-    })
-  }
-}
-
 // function getFullObject(data) {
 //   for (let i = 0; i < data['records']['length']; i++) {
 //     let objectId = data['records'][i]['objectid'];
@@ -107,15 +77,11 @@ function getFullObject(data) {
 //         apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
 //       },
 //       success: data2 => {
-//         let getCreation = '';
+//         console.log(data2)
 //         fullObjectArray.push(data2);
 //         if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
 //           for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
-//             if (!fullObjectArray[j]['places'][0]) {
-//               getCreation = 'unknown';
-//             } else {
-//               getCreation = fullObjectArray[j]['places'][0]['displayname'];
-//             }
+//             const getCreation = fullObjectArray[j]['places'][0]['displayname'];
 //             creationPlaceDescriptions.push(getCreation);
 //             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
 //             divRightColumn.append(creationPlaceElement);
@@ -131,7 +97,44 @@ function getFullObject(data) {
 //   }
 // }
 
-console.log(creationPlaceDescriptions);
+function getFullObject(data) {
+  for (let i = 0; i < data['records']['length']; i++) {
+    let objectId = data['records'][i]['objectid'];
+    $.ajax({
+      url: "https://api.harvardartmuseums.org/object/" + objectId,
+      method: "GET",
+      data: {
+        apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
+      },
+      success: data2 => {
+        fullObjectArray.push(data2);
+        if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
+          for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
+            let getCreation = null;
+            console.log(fullObjectArray[j])
+            if (!fullObjectArray[j]) {
+              getCreation = '';
+            } else {
+              getCreation = fullObjectArray[j]['places'][0]['displayname'];
+            }
+            creationPlaceDescriptions.push(getCreation);
+            creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
+            divRightColumn.append(creationPlaceElement);
+            //
+          }
+          convertToAddress(creationPlaceDescriptions[0])
+        }
+      },
+      error: error2 => {
+        console.log(error2);
+      }
+    })
+  }
+  console.log('fullObjectArray', fullObjectArray);
+}
+
+
+console.log('creationPlaceDescriptions', creationPlaceDescriptions);
 //function to dynamically load art images
 // for loop to iterate through urls and push to an array, and if statement to catch empty baseimgurls
 function addImage(data) {
@@ -145,7 +148,6 @@ function addImage(data) {
     }
   }
   imageElement.src = artCollection[imageNumber]  // to set initial first image
-  console.log(artCollection);
 }
 
 //function to dynamically add descriptions to the art

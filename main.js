@@ -111,7 +111,6 @@ function getFullObject(data) {
         if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
           for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
             let getCreation = null;
-            console.log(fullObjectArray[j])
             if (!fullObjectArray[j]) {
               getCreation = '';
             } else {
@@ -130,11 +129,8 @@ function getFullObject(data) {
       }
     })
   }
-  console.log('fullObjectArray', fullObjectArray);
 }
 
-
-console.log('creationPlaceDescriptions', creationPlaceDescriptions);
 //function to dynamically load art images
 // for loop to iterate through urls and push to an array, and if statement to catch empty baseimgurls
 function addImage(data) {

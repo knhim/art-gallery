@@ -5,8 +5,8 @@ const divLeftColumn = document.querySelector('.left-column');
 const nextImageButton = document.querySelector('.next-image');
 const previousImageButton = document.querySelector('.previous-image');
 
-//global variables for right side column
-const divRightColumn = document.querySelector('.right-column');
+//global variables for Info side column
+const divInfoColumn = document.querySelector('.info-column');
 const artTitleElement = document.querySelector('.art-title');
 const classificationElement = document.querySelector('.classification');
 const dateElement = document.querySelector('.date');
@@ -18,6 +18,8 @@ const mapId = document.getElementById('map');
 
 let imageNumber = 0;
 let descriptionNumber = 0;
+
+
 
 //global variables for google api
 
@@ -84,7 +86,7 @@ $.ajax({
 //             const getCreation = fullObjectArray[j]['places'][0]['displayname'];
 //             creationPlaceDescriptions.push(getCreation);
 //             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
-//             divRightColumn.append(creationPlaceElement);
+//             divInfoColumn.append(creationPlaceElement);
 //             //
 //           }
 //           convertToAddress(creationPlaceDescriptions[0])
@@ -118,7 +120,7 @@ function getFullObject(data) {
             }
             creationPlaceDescriptions.push(getCreation);
             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
-            divRightColumn.append(creationPlaceElement);
+            divInfoColumn.append(creationPlaceElement);
             //
           }
           convertToAddress(creationPlaceDescriptions[0])
@@ -182,7 +184,7 @@ function addDescription(data) {
   mediumElement.textContent = 'Medium: ' + mediumDescriptions[descriptionNumber];
   dimensionsElement.textContent = 'Dimensions: ' + dimensionsDescriptions[descriptionNumber]
 
-  divRightColumn.append(artTitleElement, classificationElement, dateElement, workTypesElement, mediumElement, dimensionsElement);
+  divInfoColumn.append(artTitleElement, classificationElement, dateElement, workTypesElement, mediumElement, dimensionsElement);
 }
 
 
@@ -236,7 +238,7 @@ function updateDescriptions() {
   creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
   mediumElement.textContent = 'Medium: ' + mediumDescriptions[descriptionNumber];
   dimensionsElement.textContent = 'Dimensions: ' + dimensionsDescriptions[descriptionNumber]
-  divRightColumn.append(artTitleElement, classificationElement, dateElement, workTypesElement, mediumElement, dimensionsElement, creationPlaceElement);
+  divInfoColumn.append(artTitleElement, classificationElement, dateElement, workTypesElement, mediumElement, dimensionsElement, creationPlaceElement);
 }
 
 

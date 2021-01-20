@@ -19,24 +19,33 @@
   </header>
   <div class="h-25 container">
 
-    <div class="row black-bg ">
-        <button class="previous-image "><i class="fas fa-arrow-left fa-6x"></i></button>
-          <img class="image rounded mx-auto d-block">
-        <button class="next-image"><i class="fas fa-arrow-right fa-6x"></i></button>
+    <div class="row black-bg d-flex justify-content-center">
+      <img class="image ">
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="mx-1 btn btn-sm previous-image"><i
+          class="fas fa-arrow-left text-dark fa-6x"></i></button>
+      <button type="button" class="mx-1 btn btn-sm next-image"><i
+          class="fas fa-arrow-right text-dark fa-6x"></i></button>
     </div>
 
+
+
     <div class="row d-flex flex-wrap">
-      <div class="col-md">
-        <div class="right-column"></div>
-        <h2 class="art-title"></h2>
-        <h2 class="classification"></h2>
-        <h2 class="date"></h2>
-        <h2 class="work-types"></h2>
-        <h2 class="creation-place"></h2>
-        <h2 class="medium"></h2>
-        <h2 class="dimensions"></h2>
+      <div class="col-md border">
+        <div class="info-column">
+          <h2 class="art-title"></h2>
+          <h2 class="classification"></h2>
+          <h2 class="date"></h2>
+          <h2 class="work-types"></h2>
+          <h2 class="creation-place"></h2>
+          <h2 class="medium"></h2>
+          <h2 class="dimensions"></h2>
+        </div>
       </div>
-      <div class="col-md" id="map"></div>
+      <div class="col-md border">
+        <div id="map"></div>
+      </div>
     </div>
 
 

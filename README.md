@@ -9,8 +9,7 @@ A project using data from two public APIs to create an art gallery with descript
 - Harvard Art Museum API
 - Google Maps API
 
-## Live Demo
-Try this application live at https://knhim.github.io/art-gallery/
+## Live Demo: https://knhim.github.io/art-gallery/
 ![](images/art-gallery-preview.gif)
 
 ## Features

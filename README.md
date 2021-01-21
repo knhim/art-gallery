@@ -10,8 +10,8 @@ A project using data from two public APIs to create an art gallery with descript
 - Google Maps API
 
 ## Live Demo
-Try this application live at [https://knhim.github.io/art-gallery/]
-(images/art-gallery-preview)
+Try this application live at https://knhim.github.io/art-gallery/
+(images/art-gallery-preview.gif)
 
 ## Features
 - User can view various pieces of randomly selected art with the arrow buttons

@@ -138,7 +138,7 @@ function getFullObject(data) {
 function addImage(data) {
   for (let i = 0; i < data['records']['length']; i++) {
     if (data['records'][i]['images'].length === 0) {
-      imagePath = 'test-image.png'
+      imagePath = 'image-not-found.png'
       artCollection.push(imagePath);
     } else {
       let imagePath = data['records'][i]['images'][0]['baseimageurl']

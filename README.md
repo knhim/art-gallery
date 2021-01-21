@@ -11,8 +11,9 @@ A project using data from two public APIs to create an art gallery with descript
 
 ## Live Demo
 Try this application live at https://knhim.github.io/art-gallery/
-(images/art-gallery-preview.gif)
+![](images/art-gallery-preview.gif)
 
 ## Features
 - User can view various pieces of randomly selected art with the arrow buttons
+- User can read about the descriptions of art pieces
 - User can interact with google maps to view various locations around the globe

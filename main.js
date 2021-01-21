@@ -68,37 +68,6 @@ $.ajax({
 })
 
 //ajax function to get specific object id, and then the creation place
-//use for loop to grab every object, and store THE RESPONSE into an array
-// function getFullObject(data) {
-//   for (let i = 0; i < data['records']['length']; i++) {
-//     let objectId = data['records'][i]['objectid'];
-//     $.ajax({
-//       url: "https://api.harvardartmuseums.org/object/" + objectId,
-//       method: "GET",
-//       data: {
-//         apikey: "d29e23e0-b43f-11ea-8f0d-21177cb1a6f5",
-//       },
-//       success: data2 => {
-//         console.log(data2)
-//         fullObjectArray.push(data2);
-//         if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
-//           for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
-//             const getCreation = fullObjectArray[j]['places'][0]['displayname'];
-//             creationPlaceDescriptions.push(getCreation);
-//             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
-//             divInfoColumn.append(creationPlaceElement);
-//             //
-//           }
-//           convertToAddress(creationPlaceDescriptions[0])
-//         }
-//       },
-//       error: error2 => {
-//         console.log(error2);
-//       }
-//     })
-//   }
-// }
-
 function getFullObject(data) {
   for (let i = 0; i < data['records']['length']; i++) {
     let objectId = data['records'][i]['objectid'];
@@ -110,8 +79,8 @@ function getFullObject(data) {
       },
       success: data2 => {
         fullObjectArray.push(data2);
-        if (data['records']['length'] - 1 === i) { // data['records]['length'] - 1 to start pushing through to the array at the last index
-          for (let j = 0; j < data['records']['length']; j++) { //lines 74-78: to grab creation property, and push the first index
+        if (data['records']['length'] - 1 === i) { //start this once all the objects have been pushed to fullObjectArray
+          for (let j = 0; j < data['records']['length']; j++) {
             let getCreation = null;
             if (!fullObjectArray[j]) {
               getCreation = '';
@@ -121,7 +90,6 @@ function getFullObject(data) {
             creationPlaceDescriptions.push(getCreation);
             creationPlaceElement.textContent = 'Creation Place: ' + creationPlaceDescriptions[descriptionNumber];
             divInfoColumn.append(creationPlaceElement);
-            //
           }
           convertToAddress(creationPlaceDescriptions[0])
         }
@@ -133,8 +101,7 @@ function getFullObject(data) {
   }
 }
 
-//function to dynamically load art images
-// for loop to iterate through urls and push to an array, and if statement to catch empty baseimgurls
+//load art images
 function addImage(data) {
   for (let i = 0; i < data['records']['length']; i++) {
     if (data['records'][i]['images'].length === 0) {
@@ -148,26 +115,15 @@ function addImage(data) {
   imageElement.src = artCollection[imageNumber]  // to set initial first image
 }
 
-//function to dynamically add descriptions to the art
-// same thing as addImage function, iterate through array, and push
+//add art descriptions
 function addDescription(data) {
   for (let i = 0; i < data['records']['length']; i++) {
-    // const {
-    //   title,
-    //   classification,
-    //   dated,
-    //   worktype,
-    //   medium,
-    //   getDimensions
-    // } = data.records[i].worktypes[0]
     const getTitle = data['records'][i]['title']
     const getClassification = data['records'][i]['classification'];
     const getDate = data['records'][i]['dated'];
     const getWorkTypes = data['records'][i]['worktypes'][0]['worktype'];
     const getMedium = data['records'][i]['medium'];
     const getDimensions = data['records'][i]['dimensions'];
-
-    // const getCreation = fullObjectArray[i]['places'][0]['displayname'];
 
     titleDescriptions.push(getTitle);
     classificationDescriptions.push(getClassification);
@@ -186,27 +142,6 @@ function addDescription(data) {
 
   divInfoColumn.append(artTitleElement, classificationElement, dateElement, workTypesElement, mediumElement, dimensionsElement);
 }
-
-
-//function nextImage will move to next image
-// function nextImage() {
-//   if (imageNumber === 24) {
-//     imageNumber = 0;
-//   }
-//   imageNumber++;
-//   imageElement.src = artCollection[imageNumber]
-//   updateDescriptions();
-// }
-
-// //function previous Image will go back one image
-// function previousImage() {
-//   if (imageNumber === 0) {
-//     imageNumber = 24;
-//   }
-//   imageNumber--;
-//   imageElement.src = artCollection[imageNumber];
-//   updateDescriptions();
-// }
 
 //function nextImage will move to next image
 function nextImage() {
@@ -246,12 +181,6 @@ nextImageButton.addEventListener('click', nextImage);
 nextImageButton.addEventListener('click', dimScreen);
 previousImageButton.addEventListener('click', previousImage);
 previousImageButton.addEventListener('click', dimScreen);
-
-
-
-function loader() {
-
-}
 
 function dimScreen() {
   document.querySelector('.loader').style.display = 'block';

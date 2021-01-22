@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  font-size: 18px;
+  font-size: 16px;
   background: darkgrey;
 }
 #map {
@@ -87,7 +87,7 @@ html, body {
 /* dim page */
 .dimmer {
   background:#000;
-  opacity:0.5;
+  opacity:0.7;
   position:fixed;
   top:0;
   left:0;
@@ -131,7 +131,7 @@ html, body {
 
   #map {
     width: auto;
-    height: 300px;
+    height: 250px;
   }
 
 }
@@ -148,7 +148,7 @@ html, body {
 
   #map {
     width: auto;
-    height: 200px;
+    height: 300px;
   }
 
 }

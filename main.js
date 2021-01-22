@@ -115,7 +115,6 @@ function addImage(data) {
   imageElement.src = artCollection[imageNumber]  // to set initial first image
 }
 
-console.log(artCollection);
 //add art descriptions
 function addDescription(data) {
   for (let i = 0; i < data['records']['length']; i++) {

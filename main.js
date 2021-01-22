@@ -63,7 +63,7 @@ $.ajax({
     getFullObject(data);
   },
   error: error => {
-    console.log(error);
+    console.error(error);
   }
 })
 
@@ -95,7 +95,7 @@ function getFullObject(data) {
         }
       },
       error: error2 => {
-        console.log(error2);
+        console.error(error2);
       }
     })
   }

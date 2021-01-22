@@ -105,7 +105,7 @@ function getFullObject(data) {
 function addImage(data) {
   for (let i = 0; i < data['records']['length']; i++) {
     if (data['records'][i]['images'].length === 0) {
-      imagePath = 'image-not-found.png'
+      imagePath = 'images/image-not-found.png'
       artCollection.push(imagePath);
     } else {
       let imagePath = data['records'][i]['images'][0]['baseimageurl']
@@ -115,6 +115,7 @@ function addImage(data) {
   imageElement.src = artCollection[imageNumber]  // to set initial first image
 }
 
+console.log(artCollection);
 //add art descriptions
 function addDescription(data) {
   for (let i = 0; i < data['records']['length']; i++) {
@@ -182,10 +183,12 @@ nextImageButton.addEventListener('click', dimScreen);
 previousImageButton.addEventListener('click', previousImage);
 previousImageButton.addEventListener('click', dimScreen);
 
-//css loaders & disabling buttons
+//css loaders & disabling buttons & hide image
 function dimScreen() {
   document.querySelector('.loader').style.display = 'block';
   document.querySelector('.dimmer').style.display = 'block';
+  document.querySelector('.image').style.display = 'none';
+  document.querySelector('.hidden').style.display = "none";
   nextImageButton.disabled = true;
   previousImageButton.disabled = true;
   setTimeout(undimScreen, 1000);
@@ -194,6 +197,8 @@ function dimScreen() {
 function undimScreen() {
   document.querySelector('.loader').style.display = "none";
   document.querySelector('.dimmer').style.display = 'none';
+  document.querySelector('.image').style.display = '';
+  document.querySelector('.hidden').style.display = '';
   nextImageButton.disabled = false;
   previousImageButton.disabled = false;
 }

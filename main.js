@@ -182,15 +182,20 @@ nextImageButton.addEventListener('click', dimScreen);
 previousImageButton.addEventListener('click', previousImage);
 previousImageButton.addEventListener('click', dimScreen);
 
+//css loaders & disabling buttons
 function dimScreen() {
   document.querySelector('.loader').style.display = 'block';
   document.querySelector('.dimmer').style.display = 'block';
+  nextImageButton.disabled = true;
+  previousImageButton.disabled = true;
   setTimeout(undimScreen, 1000);
 }
 
 function undimScreen() {
   document.querySelector('.loader').style.display = "none";
   document.querySelector('.dimmer').style.display = 'none';
+  nextImageButton.disabled = false;
+  previousImageButton.disabled = false;
 }
 
 

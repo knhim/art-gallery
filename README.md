@@ -1,5 +1,5 @@
 # Art Gallery
-A project using data from two public APIs to create an art gallery with descriptions and their respective google map locations.
+An application using data from two public APIs to create an art gallery with descriptions and their respective google map locations.
 
 ## Technologies Used
 - HTML5

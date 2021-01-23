@@ -214,7 +214,9 @@ function initMap() {
   let mapOptions =
   {
     zoom: 6,
-    center: latlng
+    center: latlng,
+    disableDefaultUI: true,
+    gestureHandling: 'greedy'
   }
   map = new google.maps.Map(mapId, mapOptions)
 

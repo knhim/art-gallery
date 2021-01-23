@@ -119,9 +119,9 @@ html, body {
 
 
 
-/* iphone 6/7/8 portrait */
+/* iphone 6/7/8 portrait  and iphone max*/
 
-@media screen and (min-width: 375px) and (max-height: 667px) {
+@media screen and (min-width: 375px) and (max-height: 812px) {
   html, body {
   font-size: 9px;
   width: 100%;

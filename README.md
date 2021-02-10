@@ -15,6 +15,6 @@ An application using data from two public APIs to create an art gallery with des
 - User can interact with google maps to view various locations around the globe
 
 ## Live Demo: https://knhim.github.io/art-gallery/
-![](images/art-gallery-preview.gif)
+<img src="images/art-gallery-preview.gif" width=500px/>
 
 
